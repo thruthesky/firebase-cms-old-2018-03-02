@@ -12,4 +12,8 @@ export class AppComponent {
     //
     this.version = cms.version();
   }
+  
+  onLogin() {
+    console.log("login success");
+  }
 }

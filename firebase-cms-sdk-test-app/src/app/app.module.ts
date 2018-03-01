@@ -33,5 +33,6 @@ import { AppComponent } from './app.component';
 export class AppModule {
   constructor( cms: FirebaseCmsService, afAuth: AngularFireAuth ) {
     cms.setAngularFireAuth( afAuth );
+    // cms.setFirebaseFunctionsApi( "https://us-central1-thruthesky-firebase-backend.cloudfunctions.net/api" );
   }
 }

@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 // import { SampleDirective } from './sample.directive';
 // import { SamplePipe } from './sample.pipe';
@@ -25,6 +25,9 @@ export * from './firebase-cms.service';
     LoginComponent,
     // SampleDirective,
     // SamplePipe
+  ],
+  providers: [
+    HttpClient
   ]
 })
 export class FirebaseCmsModule {
