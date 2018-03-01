@@ -1,35 +1,37 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SampleComponent } from './sample.component';
-import { SampleDirective } from './sample.directive';
-import { SamplePipe } from './sample.pipe';
-import { SampleService } from './sample.service';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
+// import { SampleDirective } from './sample.directive';
+// import { SamplePipe } from './sample.pipe';
+import { FirebaseCmsService } from './firebase-cms.service';
 
-export * from './sample.component';
-export * from './sample.directive';
-export * from './sample.pipe';
-export * from './sample.service';
+export * from './components/login/login.component';
+// export * from './sample.directive';
+// export * from './sample.pipe';
+export * from './firebase-cms.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   declarations: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
+    LoginComponent,
+    // SampleDirective,
+    // SamplePipe
   ],
   exports: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
+    LoginComponent,
+    // SampleDirective,
+    // SamplePipe
   ]
 })
-export class SampleModule {
+export class FirebaseCmsModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: SampleModule,
-      providers: [SampleService]
+      ngModule: FirebaseCmsModule,
+      providers: [FirebaseCmsService]
     };
   }
 }
