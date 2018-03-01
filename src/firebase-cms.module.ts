@@ -1,55 +1,33 @@
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 
-import { Post } from './post';
-import { Member } from './member';
-import { Data } from './data';
-import { Message } from './message';
-import { Philgo } from './philgo';
+import { FirebaseCmsService } from './providers/firebase-cms.service';
+export * from './providers/firebase-cms.service';
 
-import { SampleHomePage } from '../sample-pages/home/home';
-import { SampleLoginPage } from '../sample-pages/login/login';
-import { SampleRegisterPage } from '../sample-pages/register/register';
-import { SamplePostPage } from '../sample-pages/post/post';
-import { ViewComponent } from './component/view/view-component';
-import { EditComponent } from './component/edit/edit-component';
-import { LatestComponent } from './component/latest/latest-component';
+import { LoginComponent } from './components/login/login.component';
+export * from './components/login/login.component';
 
-export let ROUTES = [
-        { path: "test/philgo/home", component: SampleHomePage, name: 'philgoHome' },
-        { path: "test/philgo/login", component: SampleLoginPage, name: 'philgoLogin' },
-        { path: "test/philgo/register", component: SampleRegisterPage, name: 'philgoRegister' },
-        { path: "test/philgo/post", component: SamplePostPage, name: 'philgoPost' }
-];
 
 @NgModule({
   declarations : [
-    EditComponent,
-    ViewComponent,
-    LatestComponent,
-    SampleHomePage,
-    SampleLoginPage,
-    SampleRegisterPage,
-    SamplePostPage
+    LoginComponent
   ],
   imports: [
-    BrowserModule,
-    HttpModule,
-    RouterModule,
-    FormsModule
+    CommonModule,
+    HttpClientModule
   ],
   exports: [
-    EditComponent,
-    ViewComponent,
-    LatestComponent
-
+    LoginComponent
   ],
-  providers : [ Member, Post, Data, Message, Philgo ]
+  providers : [
+    HttpClient,
+    FirebaseCmsService
+   ]
 })
 
 
-export class PhilgoApiModule {}
+export class FirebaseCmsModule {}
