@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import * as firebase from 'firebase';
-import { FirebaseCmsService } from '../../firebase-cms.service';
+import { FirebaseCmsService } from './../../providers/firebase-cms.service';
 @Component({
   selector: 'firebase-cms-login-component',
   templateUrl: './login.component.html'
@@ -12,6 +12,7 @@ export class LoginComponent {
     console.log(cms.afAuth);
   }
 
+
   onClickGoogleLogin() {
     this.cms.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(user => {
@@ -19,7 +20,11 @@ export class LoginComponent {
         this.login.emit();
       })
       .catch(e => {
-        console.error('Google login failed with: ', e);
+        console.error('Google login failed with ....: ', e);
       });
+  }
+
+  onClickLogout() {
+    this.cms.afAuth.auth.signOut();
   }
 }
