@@ -38,23 +38,33 @@ export class LoginComponent {
     this.cms.afAuth.auth.signOut();
   }
   onLoginFormSubmit(event: Event, form) {
-    // event.preventDefault();
-    // if (this.mode === 'login') {
-    //   this.onClickLogin();
-    // }
-    // else {
-    //   this.onClickRegister();
-    // }
-    // return false;
+    event.preventDefault();
+    if (this.mode === 'login') {
+      this.onClickLogin();
+    }
+    else {
+      this.onClickRegister();
+    }
+    return false;
   }
 
+  onClickLogin() {
+    this.cms.login( this.email, this.password )
+      .then( re => {
+        console.log("onClickLogin() => cms.login() => re: ", re);
+      });
+  }
   onClickRegister() {
-    const re = this.cms.register({
+    this.cms.register({
       email: this.email,
       password: this.password,
       name: this.name,
       mobile: this.mobile
-    });
+    })
+      .then(re => {
+        console.log('cms.register() => then: ', re);
+      });
+
 
   }
 

@@ -1,6 +1,6 @@
 <section class="login">
 
-  <div *ngIf=" ! cms.login ">
+  <div *ngIf=" ! cms.isLogin ">
 
     <div>
       <button (click)="onClickGoogleLogin()">Google Login</button>
@@ -51,7 +51,7 @@
 
 
   </div>
-  <div *ngIf=" cms.login ">
+  <div *ngIf=" cms.isLogin ">
     <h2>Hello {{ cms.userDisplayName }}!</h2>
     <button (click)=" onClickLogout() ">Logout</button>
   </div>
