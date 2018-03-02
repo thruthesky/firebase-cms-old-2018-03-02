@@ -45,7 +45,7 @@ export class FirebaseCmsService {
     this.apiUrl = url;
   }
   updateIdToken(idToken) {
-    // console.log('ID Token: ', idToken);
+    console.log('ID Token: ', idToken);
     this.idToken = idToken;
   }
 
