@@ -62,4 +62,37 @@ export class FirebaseCmsService {
     //   console.log(re);
     // });
   }
+
+  register(data) {
+    this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password)
+      .then((user: firebase.User) => {
+        console.log(user);
+
+        user.getIdToken(/* 강제변경 하지 않음 */ false)
+          .then((idToken) => { // 이 (JWT) 토큰을 서버로 전송하면 된다.
+            console.log('ID Token: ', idToken);
+            this.idToken = idToken;
+
+            let url = this.apiUrl + '?route=user.set&idToken=' + this.idToken;
+            url += '&name=' + data.name;
+            url += '&mobile=' + data.mobile;
+
+            console.log('url: ', url);
+
+            // 여기서 부터. observable 을 promise 로 바꾸고  작업을 한다.
+            this.http.get(url).subscribe(x => {
+              console.log(x);
+            });
+
+          })
+          .catch(function (error) {
+            // 에러 발생
+          });
+
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+  }
 }

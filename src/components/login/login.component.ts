@@ -1,11 +1,20 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import * as firebase from 'firebase';
 import { FirebaseCmsService } from './../../providers/firebase-cms.service';
+import { Form } from '@angular/forms';
+
 @Component({
   selector: 'firebase-cms-login-component',
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
+
+  email: string = null;
+  password: string = null;
+  mobile: number = null;
+  name: string = null;
+
+  mode: 'login' | 'register' = 'login';
 
   @Output() login = new EventEmitter<void>();
   constructor(public cms: FirebaseCmsService) {
@@ -24,7 +33,29 @@ export class LoginComponent {
       });
   }
 
+
   onClickLogout() {
     this.cms.afAuth.auth.signOut();
   }
+  onLoginFormSubmit(event: Event, form) {
+    // event.preventDefault();
+    // if (this.mode === 'login') {
+    //   this.onClickLogin();
+    // }
+    // else {
+    //   this.onClickRegister();
+    // }
+    // return false;
+  }
+
+  onClickRegister() {
+    const re = this.cms.register({
+      email: this.email,
+      password: this.password,
+      name: this.name,
+      mobile: this.mobile
+    });
+
+  }
+
 }

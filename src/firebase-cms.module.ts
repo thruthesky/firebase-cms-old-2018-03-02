@@ -18,6 +18,7 @@ export * from './components/login/login.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     HttpClientModule
   ],
   exports: [
